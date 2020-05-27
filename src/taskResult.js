@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 module.exports = _ => Object.assign({},
   {
     metas: {
@@ -14,11 +15,19 @@ module.exports = _ => Object.assign({},
       this.metas.description = description
       this.metas.id = id
     },
+    get hasErrors () {
+      return this.errors.length > 0
+    },
     log () {
+      console.log()
       console.log(this.metas.name)
       console.log(this.metas.description)
+      console.log()
 
-      this.errors.forEach(error => console.error(error))
+      if (this.hasErrors) {
+        console.error('ERRORS :')
+        this.errors.forEach(error => console.error(`- ${error}`))
+      }
     }
   }
 )

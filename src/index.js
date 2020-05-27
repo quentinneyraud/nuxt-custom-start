@@ -1,8 +1,9 @@
 const path = require('path')
 // Tasks
-const deleteReadme = require('./tasks/delete-readmes')
+const deleteReadme = require('./tasks/delete-readme-files')
+const blankProject = require('./tasks/blank-project')
 
-const availableTasks = [deleteReadme]
+const availableTasks = [deleteReadme, blankProject]
 
 const cwd = path.resolve(process.cwd())
 
@@ -29,10 +30,7 @@ const getTasksMetas = _ => {
 }
 
 const logTasksMetas = _ => {
-  getTasksMetas()
-    .forEach(taskMeta => {
-      console.log(taskMeta)
-    })
+  console.table(getTasksMetas())
 }
 
 module.exports = {
