@@ -23,6 +23,9 @@
   "files": [
     "umd/*"
   ],
+  "bin": {
+    "nuxt-custom-start": "cli/index.js"
+  },
   "scripts": {
     "build": "npm run lint && rollup --config",
     "lint": "eslint src/*",
@@ -41,5 +44,9 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.0.0"
+  },
+  "dependencies": {
+    "inquirer": "^7.1.0",
+    "meow": "^7.0.1"
   }
 }
