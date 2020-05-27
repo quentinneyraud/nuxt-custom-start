@@ -5,31 +5,13 @@
 ## Install
 
 ```bash
-yarn add @qneyraud/nuxt-custom-start
+npm install -g @qneyraud/nuxt-custom-start
 ```
+
+or use `npx`
 
 ## Usage
 
-```js
-// minified
-import NuxtCustomStart from '@qneyraud/nuxt-custom-start'
-
-// not minified
-import NuxtCustomStart from '@qneyraud/nuxt-custom-start/umd/nuxt-custom-start.js'
-```
-
-## Development
-
 ```bash
-# install dependencies
-yarn
-
-# Run example and go to http://localhost:1234
-npm run dev
-```
-
-## Build
-
-```bash
-npm run build
+npx @qneyraud/nuxt-custom-start --help
 ```
