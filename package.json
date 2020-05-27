@@ -1,0 +1,45 @@
+{
+  "name": "@qneyraud/nuxt-custom-start",
+  "version": "1.0.0",
+  "license": "ISC",
+  "keywords": [],
+  "author": {
+    "name": "Quentin Neyraud",
+    "email": "quentin.neyraud@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "Quentin Neyraud",
+      "email": "quentin.neyraud@gmail.com"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Quentin Neyraud",
+      "email": "quentin.neyraud@gmail.com"
+    }
+  ],
+  "main": "umd/nuxt-custom-start.min.js",
+  "files": [
+    "umd/*"
+  ],
+  "scripts": {
+    "build": "npm run lint && rollup --config",
+    "lint": "eslint src/*",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@qneyraud/eslint-config": "^1.0.3",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.15.6",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.0.0"
+  }
+}
