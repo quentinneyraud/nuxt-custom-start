@@ -7,8 +7,8 @@ const COMPONENTS_DIRECTORY_PATH = getProjectFile('./components')
 const PAGES_DIRECTORY_PATH = getProjectFile('./pages')
 const LAYOUTS_DIRECTORY_PATH = getProjectFile('./layouts')
 
-const BLANK_PAGE_TEMPLATE_PATH = path.resolve(__dirname, './template/blank-page.vue')
-const BLANK_LAYOUT_TEMPLATE_PATH = path.resolve(__dirname, './template/blank-layout.vue')
+const BLANK_PAGE_TEMPLATE_PATH = path.resolve(__dirname, './templates/blank-page.vue')
+const BLANK_LAYOUT_TEMPLATE_PATH = path.resolve(__dirname, './templates/blank-layout.vue')
 
 const metas = {
   name: 'Create a blank project',

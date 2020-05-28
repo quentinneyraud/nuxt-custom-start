@@ -2,8 +2,9 @@ const path = require('path')
 // Tasks
 const deleteReadme = require('./tasks/delete-readme-files')
 const blankProject = require('./tasks/blank-project')
+const installStylus = require('./tasks/install-stylus')
 
-const availableTasks = [deleteReadme, blankProject]
+const availableTasks = [deleteReadme, blankProject, installStylus]
 
 const cwd = path.resolve(process.cwd())
 

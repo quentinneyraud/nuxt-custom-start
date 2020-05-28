@@ -40,6 +40,7 @@
     "eslint-plugin-standard": "^4.0.0"
   },
   "dependencies": {
+    "execa": "^4.0.2",
     "inquirer": "^7.1.0",
     "meow": "^7.0.1"
   }
