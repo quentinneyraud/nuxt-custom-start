@@ -1,7 +1,10 @@
 #!/usr/bin/env node
-const { executeAllTasks, executeTasks, getTasksMetas, logTasksMetas } = require('../src/index')
-const { projectBox } = require('../src/logs')
+
+/* eslint-disable no-console */
+const { executeAllTasks, executeTasks, getTasksMetas } = require('../src/index')
+const { projectBox } = require('../src/output')
 const meow = require('meow')
+const chalk = require('chalk')
 const inquirer = require('inquirer')
 
 const COMMANDS = ['run', 'run-all', 'view']
@@ -13,9 +16,9 @@ ${projectBox}
       $ nuxt-custom-start command
 
     Commands
-      run - Run all tasks
+      run - Run tasks specified by tasks flag or let you choose tasks with checkboxes
       run-all - Run all tasks
-      view - Display a list of all available tasks
+      view - Logs a list of all available tasks
 
     Options
       --tasks, -t  Only execute some tasks
@@ -52,7 +55,22 @@ if (!COMMANDS.includes(cliExecution.input[0])) {
 const command = cliExecution.input[0]
 
 if (command === 'view') {
-  logTasksMetas()
+  console.log()
+  console.log('List of tasks :')
+
+  getTasksMetas()
+    .forEach(meta => {
+      console.log()
+      console.log('#'.repeat(50))
+      console.log()
+      console.log(chalk.bold(meta.name))
+      console.log(meta.description)
+      console.log()
+      console.log('ID: ', meta.id)
+      console.log('Alias: ', meta.alias.join(' '))
+    })
+  console.log()
+  console.log('#'.repeat(50))
   process.exit(1)
 }
 

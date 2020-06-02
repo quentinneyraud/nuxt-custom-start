@@ -14,30 +14,25 @@ const cwd = path.resolve(process.cwd())
  *
  * @param {Array} tasks - a list of all tasks that will be executed
  */
-const executeTasks = tasks => {
+const executeTasks = async tasks => {
   const promises = availableTasks
     .filter(({ metas }) => tasks.includes(metas.id) || metas.alias.some(a => tasks.includes(a)))
     .map(task => task.execute({ cwd }))
 
-  return Promise.all(promises)
+  await Promise.all(promises)
 }
 
-const executeAllTasks = _ => {
+const executeAllTasks = async _ => {
   const allTasksIds = availableTasks.map(task => task.metas.id)
-  return executeTasks(allTasksIds)
+  await executeTasks(allTasksIds)
 }
 
 const getTasksMetas = _ => {
   return availableTasks.map(task => task.metas)
 }
 
-const logTasksMetas = _ => {
-  console.table(getTasksMetas())
-}
-
 module.exports = {
   executeAllTasks,
   executeTasks,
-  getTasksMetas,
-  logTasksMetas
+  getTasksMetas
 }
