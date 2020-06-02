@@ -14,17 +14,17 @@ const cwd = path.resolve(process.cwd())
  *
  * @param {Array} tasks - a list of all tasks that will be executed
  */
-const executeTasks = async tasks => {
+const executeTasks = tasks => {
   const promises = availableTasks
     .filter(({ metas }) => tasks.includes(metas.id) || metas.alias.some(a => tasks.includes(a)))
     .map(task => task.execute({ cwd }))
 
-  await Promise.all(promises)
+  return Promise.all(promises)
 }
 
-const executeAllTasks = async _ => {
+const executeAllTasks = _ => {
   const allTasksIds = availableTasks.map(task => task.metas.id)
-  await executeTasks(allTasksIds)
+  return executeTasks(allTasksIds)
 }
 
 const getTasksMetas = _ => {

@@ -17,17 +17,6 @@ module.exports = _ => Object.assign({},
     },
     get hasErrors () {
       return this.errors.length > 0
-    },
-    log () {
-      console.log()
-      console.log(this.metas.name)
-      console.log(this.metas.description)
-      console.log()
-
-      if (this.hasErrors) {
-        console.error('ERRORS :')
-        this.errors.forEach(error => console.error(`- ${error}`))
-      }
     }
   }
 )
