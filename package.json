@@ -40,6 +40,8 @@
     "eslint-plugin-standard": "^4.0.0"
   },
   "dependencies": {
+    "boxen": "^4.2.0",
+    "chalk": "^4.0.0",
     "execa": "^4.0.2",
     "inquirer": "^7.1.0",
     "meow": "^7.0.1",

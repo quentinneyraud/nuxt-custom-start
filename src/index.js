@@ -5,8 +5,7 @@ const blankProject = require('./tasks/blank-project')
 const installStylus = require('./tasks/install-stylus')
 const gitignore = require('./tasks/gitignore')
 
-// const availableTasks = [deleteReadme, blankProject, installStylus]
-const availableTasks = [gitignore]
+const availableTasks = [deleteReadme, blankProject, installStylus, gitignore]
 
 const cwd = path.resolve(process.cwd())
 

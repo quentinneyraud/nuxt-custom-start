@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 const { executeAllTasks, executeTasks, getTasksMetas, logTasksMetas } = require('../src/index')
-
+const { projectBox } = require('../src/logs')
 const meow = require('meow')
 const inquirer = require('inquirer')
+
 const COMMANDS = ['run', 'run-all', 'view']
 
 const cliExecution = meow(`
+${projectBox}
+
     Usage
       $ nuxt-custom-start command
 
@@ -22,6 +25,7 @@ const cliExecution = meow(`
       $ nuxt-custom-start run --tasks delete-readme
       $ nuxt-custom-start view
 `, {
+  description: false,
   flags: {
     tasks: {
       type: 'string',
