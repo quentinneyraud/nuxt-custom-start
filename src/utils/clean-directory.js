@@ -19,10 +19,11 @@ module.exports = async directoryPath => {
     return fsPromises.unlink(file)
       .then(_ => file)
   })
-  const promisesStates = await Promise.allSettled(promises)
 
-  return promisesStates.map(state => ({
-    status: state.status === 'fulfilled' ? 'success' : 'error',
-    path: state.file
-  }))
+  try {
+    await Promise.all(promises)
+    return true
+  } catch (err) {
+    return err
+  }
 }

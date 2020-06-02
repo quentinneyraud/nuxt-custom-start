@@ -1,6 +1,5 @@
 const execa = require('execa')
-const fileExists = require('./file-exists')
-const getProjectFile = require('./get-project-file')
+const getPackageManager = require('./get-package-manager')
 
 module.exports = async packages => {
   if (!packages) return false
@@ -9,10 +8,9 @@ module.exports = async packages => {
     packages = [packages]
   }
 
-  const useYarn = await fileExists(getProjectFile('./yarn.lock'))
-  const packageManager = useYarn ? 'yarn' : 'npm'
-  const command = useYarn ? 'add' : 'install'
-  const flag = useYarn ? '--dev' : '--save-dev'
+  const packageManager = await getPackageManager()
+  const command = packageManager === 'yarn' ? 'add' : 'install'
+  const flag = packageManager === 'yarn' ? '--dev' : '--save-dev'
 
   await execa(packageManager, [command, ...packages, flag])
 }
