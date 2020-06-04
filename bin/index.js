@@ -2,7 +2,7 @@
 
 /* eslint-disable no-console */
 const { executeAllTasks, executeTasks, getTasksMetas } = require('../src/index')
-const { projectBox } = require('../src/output')
+const { projectBox, blankLine, separator } = require('../src/output')
 const meow = require('meow')
 const chalk = require('chalk')
 const inquirer = require('inquirer')
@@ -55,22 +55,22 @@ if (!COMMANDS.includes(cliExecution.input[0])) {
 const command = cliExecution.input[0]
 
 if (command === 'view') {
-  console.log()
+  blankLine()
   console.log('List of tasks :')
 
   getTasksMetas()
     .forEach(meta => {
-      console.log()
-      console.log('#'.repeat(50))
-      console.log()
+      blankLine()
+      separator()
+      blankLine()
       console.log(chalk.bold(meta.name))
       console.log(meta.description)
-      console.log()
+      blankLine()
       console.log('ID: ', meta.id)
       console.log('Alias: ', meta.alias.join(' '))
     })
-  console.log()
-  console.log('#'.repeat(50))
+  blankLine()
+  separator()
   process.exit(1)
 }
 
@@ -82,11 +82,11 @@ if (command === 'run-all') {
           console.log(`${taskResult.hasErrors() ? chalk.red('✘') : chalk.green('✔')} ${taskResult.metas.name}`)
 
           if (taskResult.hasErrors()) {
-            console.log()
+            blankLine()
             taskResult.errors.forEach(error => {
               console.log(chalk.red(error))
             })
-            console.log()
+            blankLine()
           }
         })
       process.exit(0)
