@@ -19,7 +19,8 @@ const executeTasks = tasks => {
     .filter(({ metas }) => tasks.includes(metas.id) || metas.alias.some(a => tasks.includes(a)))
     .map(task => task.execute({ cwd }))
 
-  return Promise.all(promises)
+  return Promise.allSettled(promises)
+    .then(promisesStatus => promisesStatus.map(promiseStatus => promiseStatus.value))
 }
 
 const executeAllTasks = _ => {

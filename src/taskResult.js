@@ -15,7 +15,7 @@ module.exports = _ => Object.assign({},
       this.metas.description = description
       this.metas.id = id
     },
-    get hasErrors () {
+    hasErrors () {
       return this.errors.length > 0
     }
   }

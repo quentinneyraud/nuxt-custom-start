@@ -79,12 +79,14 @@ if (command === 'run-all') {
     .then(tasksResults => {
       tasksResults
         .forEach(taskResult => {
-          console.log(`${taskResult.hasErrors ? chalk.red('✘') : chalk.green('✔')} ${taskResult.metas.name}`)
+          console.log(`${taskResult.hasErrors() ? chalk.red('✘') : chalk.green('✔')} ${taskResult.metas.name}`)
 
-          if (taskResult.hasErrors) {
+          if (taskResult.hasErrors()) {
+            console.log()
             taskResult.errors.forEach(error => {
-              console.log(error)
+              console.log(chalk.red(error))
             })
+            console.log()
           }
         })
       process.exit(0)

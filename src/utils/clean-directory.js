@@ -11,7 +11,7 @@ const path = require('path')
 module.exports = async directoryPath => {
   const files = await fsPromises.readdir(directoryPath)
 
-  if (files.length === 0) return []
+  if (files.length === 0) return
 
   const promises = files.map(file => {
     file = path.resolve(directoryPath, file)
@@ -20,10 +20,5 @@ module.exports = async directoryPath => {
       .then(_ => file)
   })
 
-  try {
-    await Promise.all(promises)
-    return true
-  } catch (err) {
-    return err
-  }
+  await Promise.all(promises)
 }
