@@ -6,6 +6,7 @@ const installPackages = require('./install-packages')
 const getFileContent = require('./get-file-content')
 const writeFile = require('./write-file')
 const getPackageManager = require('./get-package-manager')
+const addLineToFile = require('./add-line-to-file')
 
 module.exports = {
   cleanDirectory,
@@ -15,5 +16,6 @@ module.exports = {
   installPackages,
   getFileContent,
   writeFile,
-  getPackageManager
+  getPackageManager,
+  addLineToFile
 }
