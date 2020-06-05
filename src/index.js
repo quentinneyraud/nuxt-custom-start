@@ -1,11 +1,6 @@
 const path = require('path')
 // Tasks
-const deleteReadme = require('./tasks/delete-readme-files')
-const blankProject = require('./tasks/blank-project')
-const installStylus = require('./tasks/install-stylus')
-const gitignore = require('./tasks/gitignore')
-
-const availableTasks = [deleteReadme, blankProject, installStylus, gitignore]
+const tasks = require('./tasks/index')
 
 const cwd = path.resolve(process.cwd())
 
@@ -14,9 +9,9 @@ const cwd = path.resolve(process.cwd())
  *
  * @param {Array} tasks - a list of all tasks that will be executed
  */
-const executeTasks = tasks => {
-  const promises = availableTasks
-    .filter(({ metas }) => tasks.includes(metas.id) || metas.alias.some(a => tasks.includes(a)))
+const executeTasks = tasksIds => {
+  const promises = tasks
+    .filter(({ metas }) => tasksIds.includes(metas.id) || metas.alias.some(a => tasksIds.includes(a)))
     .map(task => task.execute({ cwd }))
 
   return Promise.allSettled(promises)
@@ -24,12 +19,12 @@ const executeTasks = tasks => {
 }
 
 const executeAllTasks = _ => {
-  const allTasksIds = availableTasks.map(task => task.metas.id)
+  const allTasksIds = tasks.map(task => task.metas.id)
   return executeTasks(allTasksIds)
 }
 
 const getTasksMetas = _ => {
-  return availableTasks.map(task => task.metas)
+  return tasks.map(task => task.metas)
 }
 
 module.exports = {
