@@ -8,15 +8,19 @@ const escapeForRegex = str => {
 module.exports = async (filePath, data, { after, before } = {}) => {
   const originalContent = await getFileContent(filePath)
 
-  const modifiedContent = originalContent.split('\n').reduce((modifiedLines, currentLine) => {
-    const matchAfter = after && currentLine.match(new RegExp(escapeForRegex(after)))
-    const matchBefore = before && currentLine.match(new RegExp(escapeForRegex(before)))
+  const modifiedContent = originalContent
+    .split('\n')
+    .reduce((modifiedLines, currentLine) => {
+      const matchAfter = after && currentLine.match(new RegExp(escapeForRegex(after)))
+      const matchBefore = before && currentLine.match(new RegExp(escapeForRegex(before)))
 
-    matchBefore && modifiedLines.push(data)
-    modifiedLines.push(currentLine)
-    matchAfter && modifiedLines.push(data)
-    return modifiedLines
-  }, []).join('\n')
+      matchBefore && modifiedLines.push(data)
+      modifiedLines.push(currentLine)
+      matchAfter && modifiedLines.push(data)
+
+      return modifiedLines
+    }, [])
+    .join('\n')
 
   await writeFile(filePath, modifiedContent)
 }

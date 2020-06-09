@@ -7,6 +7,7 @@ const getFileContent = require('./get-file-content')
 const writeFile = require('./write-file')
 const getPackageManager = require('./get-package-manager')
 const addLineToFile = require('./add-line-to-file')
+const replaceInFile = require('./replace-in-file')
 
 module.exports = {
   cleanDirectory,
@@ -17,5 +18,6 @@ module.exports = {
   getFileContent,
   writeFile,
   getPackageManager,
-  addLineToFile
+  addLineToFile,
+  replaceInFile
 }
