@@ -12,7 +12,11 @@ const metas = {
 const execute = async () => {
   taskResult.addMetas(metas)
 
-  await installPackages(['stylus', 'stylus-loader'])
+  try {
+    await installPackages(['stylus', 'stylus-loader'])
+  } catch (err) {
+    console.log('err:', err)
+  }
 
   return taskResult
 }

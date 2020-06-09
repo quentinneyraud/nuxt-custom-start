@@ -39,6 +39,7 @@ const execute = async () => {
 
     await fsExtra.copy(path.resolve(__dirname, './templates/styles'), getProjectFile('./assets/styles'))
   } catch (err) {
+    console.log(err)
     taskResult.addError('Error while install q-stylus package')
   }
 

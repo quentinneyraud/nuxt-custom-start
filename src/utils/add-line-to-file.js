@@ -25,5 +25,5 @@ module.exports = async (filePath, data, { after, before, afterLine, beforeLine }
 
   await writeFile(filePath, modifiedContent)
 
-  await execa('npm', ['run', 'lint', '--', '--fix'])
+  // await execa.sync('npm', ['run', 'lint', '--', '--fix'])
 }

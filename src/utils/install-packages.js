@@ -12,5 +12,6 @@ module.exports = async packages => {
   const command = packageManager === 'yarn' ? 'add' : 'install'
   const flag = packageManager === 'yarn' ? '--dev' : '--save-dev'
 
-  await execa(packageManager, [command, ...packages, flag])
+  await execa.sync('yarn')
+  await execa.sync(packageManager, [command, ...packages, flag])
 }
