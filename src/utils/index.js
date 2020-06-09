@@ -1,6 +1,6 @@
 const cleanDirectory = require('./clean-directory')
 const getProjectFile = require('./get-project-file')
-const copyFile = require('./copy-file')
+const copy = require('./copy')
 const fileExists = require('./file-exists')
 const installPackages = require('./install-packages')
 const getFileContent = require('./get-file-content')
@@ -12,7 +12,7 @@ const replaceInFile = require('./replace-in-file')
 module.exports = {
   cleanDirectory,
   getProjectFile,
-  copyFile,
+  copy,
   fileExists,
   installPackages,
   getFileContent,

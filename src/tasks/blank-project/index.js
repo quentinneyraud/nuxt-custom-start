@@ -1,5 +1,6 @@
 const path = require('path')
-const { cleanDirectory, getProjectFile, copyFile } = require('../../utils')
+const fsExtra = require('fs-extra')
+const { getProjectFile } = require('../../utils')
 
 const taskResult = require('../../taskResult')()
 
@@ -24,21 +25,21 @@ const execute = async () => {
 
   // Remove all files in /components directory
   try {
-    await cleanDirectory(COMPONENTS_DIRECTORY_PATH)
+    await fsExtra.emptyDir(COMPONENTS_DIRECTORY_PATH)
   } catch (_) {
     taskResult.addError('Error while cleaning components directory')
   }
 
   // Copy blank page to /pages directory
   try {
-    await copyFile(BLANK_PAGE_TEMPLATE_PATH, BLANK_PAGE_FILE_PATH)
+    await fsExtra.copy(BLANK_PAGE_TEMPLATE_PATH, BLANK_PAGE_FILE_PATH)
   } catch (_) {
     taskResult.addError(`Error while copying blank page component, to ${BLANK_PAGE_FILE_PATH}`)
   }
 
   // Copy blank layout to /layouts directory
   try {
-    await copyFile(BLANK_LAYOUT_TEMPLATE_PATH, BLANK_LAYOUT_FILE_PATH)
+    await fsExtra.copy(BLANK_LAYOUT_TEMPLATE_PATH, BLANK_LAYOUT_FILE_PATH)
   } catch (_) {
     taskResult.addError(`Error while copying blank layout component, to ${BLANK_LAYOUT_FILE_PATH}`)
   }

@@ -18,7 +18,6 @@ const execute = async () => {
       replace: 'false'
     })
   } catch (err) {
-    console.log('err:', err)
     taskResult.addError('Error while setting loading to false')
   }
 
